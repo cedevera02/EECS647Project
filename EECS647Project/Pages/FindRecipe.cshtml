@@ -10,7 +10,8 @@
 <head>
     <h1>@ViewData["Title"]</h1>
     <p>Select Filters to Match What You Want To Eat</p>
-    <div id="Filters" class="form-group">
+    <div class="text-center">
+        <div id="Filters" class="form-group">
         <label for="DietTyype">Choose a Diet Type:</label>
         <select name="DietType" id="DietType">
           <option value="No preference">No preference</option>
@@ -24,6 +25,15 @@
             <option value="$$">$$</option>
             <option value="$$$">$$$</option>
         </select>
+        <label for="MealType">Meal Type:</label>
+        <select name="MealType" id="MealTyoe">
+            <option value="N/A">N/A</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Dessert">Dessert</option>
+        </select>
+    </div>
     </div>
 </head>
 <body>
