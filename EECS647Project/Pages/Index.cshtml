@@ -1,0 +1,99 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@@keyframes fade {
+  from {opacity: .1} 
+  to {opacity: 1}
+}
+
+img {
+    width: auto;
+    height: 25%;
+}
+
+#slider div {
+    display: flex;
+    justify-content: center;
+}
+
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to EZ Recipes</h1>
+    <p>(Title subject to change)</p>
+</div>
+<body>
+    <div id="slider">
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/American-Breakfast.png" class="center"/>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/Brownies.png" class="center"/>
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/cauliflower-1.png" class="center"/>
+        </div>    
+            
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/chicken-alfredo.png" class="center"/>
+        </div>
+
+        <div class="mySlides fade">           
+            <img src="~/SlideShowImgs/Fish-and-Chips.png" class="center"/>
+        </div>
+            
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/Ginger-Teriyaki-Chicken-Stir-Fry.png" class="center"/>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/Rainbow-Trout.png" class="center"/>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/Ratatouille-recipe.png" class="center"/>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/SalmonRecipe.png" class="center"/>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/SlideShowImgs/Garlic-Butter-Steak.png" class="center"/>
+        </div>
+
+    </div>
+</body>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1} 
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
