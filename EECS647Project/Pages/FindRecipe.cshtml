@@ -6,6 +6,14 @@
 <style>
     h1{text-align: center;}
     p{text-align: center;}
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
 </style>
 <head>
     <h1>@ViewData["Title"]</h1>
@@ -18,6 +26,7 @@
           <option value="Vegetarian">Vegetarian</option>
           <option value="Vegan">Vegan</option>
         </select>
+
         <label for="Prices">Prices:</label>
         <select name="Prices" id="Prices">
             <option value="N/A">N/A</option>
@@ -25,6 +34,7 @@
             <option value="$$">$$</option>
             <option value="$$$">$$$</option>
         </select>
+
         <label for="MealType">Meal Type:</label>
         <select name="MealType" id="MealTyoe">
             <option value="N/A">N/A</option>
@@ -33,6 +43,8 @@
             <option value="Dinner">Dinner</option>
             <option value="Dessert">Dessert</option>
         </select>
+
+        <button class="btn btn-dark">Search</button>
     </div>
     </div>
 </head>
@@ -67,4 +79,35 @@
         <input type="checkbox">Check me out</label>
 </div>
 <button type="submit" class="btn btn-default">Submit</button>*@
+<div id="ResultsTable" class="text-center">
+    <table id="RecipeTitleTable" class="center">
+        <thead>
+            <tr>
+                <th>Recipes:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr> 
+               <td>
+                   <form name="f2">
+                    <input id="Recipe1" type="submit" name="Recipe1" value="American Breakfast" />
+                   </form>
+               </td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="parent" value="Brownies">Brownies</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Chicken Alfredo</td>
+            </tr>
+            <tr>
+                <td>Cauliflower Food</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
 </body>
