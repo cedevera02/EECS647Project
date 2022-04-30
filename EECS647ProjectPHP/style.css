@@ -382,3 +382,147 @@ h2 {
 }
 
 
+/*======================================================
+                    Tables 
+======================================================*/
+
+/* table{
+    width:100%;
+    table-layout: fixed;
+  }
+  .tbl-header{
+    background-color: rgba(93, 93, 93, 0.3);
+   }
+  .tbl-content{
+    height:300px;
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(93, 93, 93, 0.3);
+  }
+  th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+  }
+  td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    border-bottom: solid 1px rgba(93, 93, 93, 0.1);
+  }
+  
+  
+  /* demo styles */
+  
+  /* @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+  body{
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    font-family: 'Roboto', sans-serif;
+  } */
+  section{
+    margin: 50px;
+  }
+  
+  /* for custom scrollbar for webkit browser*/
+  
+  ::-webkit-scrollbar {
+      width: 6px;
+  } 
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  } 
+  ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  } */
+
+  section{
+    min-width: 350px;
+    height: 300px;
+    overflow: scroll;
+    margin: auto ;
+  }
+
+table{
+  min-width: 875px;
+  border-collapse: collapse;
+}
+  
+thead{
+  font-size: .8rem;
+  text-transform: uppercase;
+  background: #f1f1f1;
+}
+
+tr{
+  border-top: 1px solid #e6e6e6;
+}
+  
+tr:hover{
+  background-color: #f5f8fc;
+}
+
+td{
+  font-weight: 100;
+}
+ 
+th, td{
+  padding: 1.25rem 2rem;
+}
+  
+td:first-child,
+th:first-child{
+  text-align: left;
+}
+  
+td:nth-last-child(2),
+th:nth-last-child(2){
+  text-align: right;
+}
+  
+td + td:not(:nth-last-child(2)){
+  text-align: center;
+}
+  
+.table__button-group{
+  visibility: hidden;
+  transition: visibility .06s ease-in;
+}
+  
+  a {
+    text-decoration: none;
+    color: #0989ab;
+    font-size: .8rem;
+    font-weight: 500;
+  }
+      
+  a:hover{
+    color: #0989ab;
+    opacity: .75;
+  }
+  
+  a ~ a:before{
+    content: "|";
+    padding: 0 .35rem;
+  }
+    
+
+tr:hover > td .table__button-group{
+  visibility: visible;
+}
+  
+@media (max-width: 800px){
+  .table__button-group{
+    visibility: visible;
+  }
+}
+
+/*======================================================
+                    Buttons
+======================================================*/
