@@ -79,15 +79,39 @@
             </tbody>
         </table>
     </div>
-    <br />
-    <br />
-    <p>Second Test Table</p>
-    <br />
+    <div id="Table2">
+        <form action="FindRecipe.php" method="post">
+            <table>
+                <thead>
+                <tr>
+                    <th>Recipes:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $mysqli = new mysqli("mysql.eecs.ku.edu","c952d843","dummypass","c952d843");
 
-    <asp:Literal ID= "ltTable" runat = "server" />
+                if($mysqli->connect_errno){
+                     echo "<p>Connection Failed</p>";
+                     exit();
+                }
 
-    <p>Third test Table</p>
-    <br />
-    <table id="tableContent" border="1" runat="server"></table>
+                $query = "SELECT SHIPNAME FROM SHIP";
+
+
+
+                if ($result = $mysqli->query($query)) {
+                 /* fetch associative array */
+                     while ($row = $result->fetch_assoc()) {
+                        echo "<tr> <td>.$row["SHIPNAME"].</td> </tr>";
+                     }
+                 /* free result set */
+                 $result->free();
+                
+                ?>
+            </tbody>
+            </table>
+        </form>
+    </div>
 
 </body>

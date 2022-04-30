@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<link rel = "stylesheet" type = "text/css" href = "style.css"/>
+<style>
+
+    .active {
+      background-color: #717171;
+    }
+    
+    @keyframes fade {
+      from {opacity: .1} 
+      to {opacity: 1}
+    }
+    
+    .center {
+        text-align: center;
+    }
+    
+    img {
+        width: auto;
+        height: 25%;
+    }
+    
+    #slider div {
+        display: flex;
+        justify-content: center;
+    }
+    
+</style>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <nav id="navbar" class="">
+        <div class="nav-wrapper">
+            <!-- Navbar Logo -->
+            <div class="logo">
+            <!-- Logo Placeholder for Inlustration -->
+            <a href="IndexHome.html"><i class="fa fa-angellist"></i> EZ Recipe</a>
+            </div>
+
+            <!-- Navbar Links -->
+            <ul id="menu">
+            <li><a href="IndexHome.html">Home</a></li><!--
+        --><li><a href="FindRecipes.html">Find Recipes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Menu Icon -->
+    <div class="menuIcon">
+    <span class="icon icon-bars"></span>
+    <span class="icon icon-bars overlay"></span>
+    </div>
+
+
+    <div class="overlay-menu">
+    <ul id="menu">
+        <li><a href="IndexHome.html">Home</a></li>
+        <li><a href="FindRecipes.html">Find Recipes</a></li>
+        </ul>
+    </div>
+</head>
+
+<header>
+    <h1>Welcome to EZ Recipes</h1>
+    <p>(Title subject to change)</p>
+</header>
+    
+<body>
+    <h1 class="site-title">Welcome to EZ Recipes</h1>
+    <div id="slider" class="wrapper">
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/American-Breakfast.jpg"/>
+        </div>
+
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/Brownies.png"/>
+        </div>
+        
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/Chicken-alfredo.jpg"/>
+        </div>    
+            
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/chicken-stir-fry.jpg"/>
+        </div>
+
+        <div class="mySlides fade grid grid-center">           
+            <img src="SlideShowImgs/Fish-and-Chips.png"/>
+        </div>
+            
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/grilled-trout.jpg"/>
+        </div>
+
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/ratatouille.jpg"/>
+        </div>
+
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/Steak.jpg"/>
+        </div>
+
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/Trout.jpg"/>
+        </div>
+
+        <div class="mySlides fade grid grid-center">
+            <img src="SlideShowImgs/Vegan-Okonomiyaki.jpg"/>
+        </div>
+
+    </div>
+
+    <div id="Recipe of The Day" class="centered">
+        <br /><br />
+        <h2>Recipe of the Day:</h2>
+        <p>Random Recipe!</p>
+    </div>
+</body>
+
+<script>
+var slideIndex = 0;
+showSlides();
+function showSlides(){
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0;i < slides.length;i++){
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length){slideIndex = 1;}
+    slides[slideIndex-1].style.display = "flex";
+    setTimeout(showSlides,2000)};
+</script>
+
