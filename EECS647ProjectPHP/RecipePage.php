@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <link rel = "stylesheet" type = "text/css" href = "style.css"/>
 <head>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <nav id="navbar" class="">
         <div class="nav-wrapper">
             <!-- Navbar Logo -->
             <div class="logo">
             <!-- Logo Placeholder for Inlustration -->
-            <a href="IndexHome.html"><i class="fa fa-angellist"></i> EZ Recipe</a>
+            <a href="IndexHome.php"><i class="fa fa-angellist"></i> EZ Recipe</a>
             </div>
 
             <!-- Navbar Links -->
             <ul id="menu">
-            <li><a href="IndexHome.html">Home</a></li><!--
-        --><li><a href="FindRecipes.html">Find Recipes</a></li>
+            <li><a href="IndexHome.php">Home</a></li><!--
+        --><li><a href="FindRecipes.php">Find Recipes</a></li>
             </ul>
         </div>
     </nav>
@@ -28,8 +28,13 @@
 
     <div class="overlay-menu">
     <ul id="menu">
-        <li><a href="IndexHome.html">Home</a></li>
-        <li><a href="FindRecipes.html">Find Recipes</a></li>
+        <li><a href="IndexHome.php">Home</a></li>
+        <li><a href="FindRecipes.php">Find Recipes</a></li>
         </ul>
     </div>
 </head>
+
+<body>
+    <br><br><br><br>
+    <header></header>
+</body>

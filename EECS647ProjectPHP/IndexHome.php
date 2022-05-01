@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <link rel = "stylesheet" type = "text/css" href = "style.css"/>
-<style>
+<!-- <style>
 
     .active {
       background-color: #717171;
@@ -25,7 +25,7 @@
         justify-content: center;
     }
     
-</style>
+</style> -->
 <head>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <nav id="navbar" class="">
@@ -33,13 +33,13 @@
             <!-- Navbar Logo -->
             <div class="logo">
             <!-- Logo Placeholder for Inlustration -->
-            <a href="IndexHome.html"><i class="fa fa-angellist"></i> EZ Recipe</a>
+            <a href="IndexHome.php"><i class="fa fa-angellist"></i> EZ Recipe</a>
             </div>
 
             <!-- Navbar Links -->
             <ul id="menu">
-            <li><a href="IndexHome.html">Home</a></li><!--
-        --><li><a href="FindRecipes.html">Find Recipes</a></li>
+            <li><a href="IndexHome.php">Home</a></li><!--
+        --><li><a href="FindRecipes.php">Find Recipes</a></li>
             </ul>
         </div>
     </nav>
@@ -54,15 +54,14 @@
 
     <div class="overlay-menu">
     <ul id="menu">
-        <li><a href="IndexHome.html">Home</a></li>
-        <li><a href="FindRecipes.html">Find Recipes</a></li>
+        <li><a href="IndexHome.php">Home</a></li>
+        <li><a href="FindRecipes.php">Find Recipes</a></li>
         </ul>
     </div>
 </head>
 
 <header>
     <h1>Welcome to EZ Recipes</h1>
-    <p>(Title subject to change)</p>
 </header>
     
 <body>
@@ -111,7 +110,6 @@
     </div>
 
     <div id="Recipe of The Day" class="centered">
-        <br /><br />
         <h2>Recipe of the Day:</h2>
     </div>
     <section>
@@ -131,10 +129,34 @@
                     <td>N/A</td>
                     <td>30 min</td>
                     <td>$10</td>
+
                     <td>
-                        <div class="table__button-group"><a href="">View</a>
+                        <div class="table__button-group"><a href="javascript:getRecipe(1);">Make it!</a>
                     </td>
                </tr>
+                   <<?php 
+                    $mysqli = new mysqli("mysql.eecs.ku.edu","y283c244","kai9ju3p","y283c244");
+
+                    if($mysqli->connect_errno){
+                        echo "<p>Connection Failed</p>";
+                        exit();
+                    }
+                    $query = "SELECT name, type, prep_time, total_price FROM Recipe ORDER BY RAND() LIMIT 1";
+
+                    if ($result = $mysqli->query($query)) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>Hello</td>";
+                            echo "<td>World</td>";
+                            echo "<td>It</td>";
+                            echo "<td>I</td>";
+                            echo "</tr>";
+                        }
+                    }
+                    $result->free();
+                
+                ?>
+               
             </tbody>
         </table>
     </section>
@@ -152,6 +174,10 @@ function showSlides(){
     slideIndex++;
     if (slideIndex > slides.length){slideIndex = 1;}
     slides[slideIndex-1].style.display = "flex";
-    setTimeout(showSlides,2000)};
+    setTimeout(showSlides,2000)
+    }
+function getRecipe(ID){
+    alert(ID);
+}
 </script>
 

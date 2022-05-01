@@ -5,25 +5,18 @@
                         echo "<p>Connection Failed</p>";
                         exit();
                     }
-                    
                     $query = "SELECT name, type, prep_time, total_price FROM Recipe ORDER BY RAND() LIMIT 1";
 
-                    if ($result = $mysqli->query($query)) {
-                        /* fetch associative array */
-                            while ($row = $result->fetch_assoc()) {?>
-                               <tr>
-                                    <td><?php echo $row['name'];?></td>
-                                    <td><?php echo $row['type'];?></td>
-                                    <td><?php echo $row['prep_time'];?></td>
-                                    <td><?php echo $row['total_price'];?></td>
-                                    <td>
-                                        <button >Make It!</button>
-                                    </td>
-                               </tr>
-
-                            <?php }
+                if ($result = $mysqli->query($query)) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>Hello</td>";
+                            echo "<td>World</td>";
+                            echo "<td>It</td>";
+                            echo "<td>I</td>";
+                            echo "</tr>";
+                        }
                     }
-                        /* free result set */
-                        $result->free();
+                    $result->free();
                 
                 ?>

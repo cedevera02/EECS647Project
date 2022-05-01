@@ -5,6 +5,29 @@ margin: 0;
 padding: 0;
 }
 
+.active {
+  background-color: #717171;
+}
+
+@keyframes fade {
+  from {opacity: .1} 
+  to {opacity: 1}
+}
+
+.center {
+    text-align: center;
+}
+
+img {
+    width: auto;
+    height: 25%;
+}
+
+#slider div {
+    display: flex;
+    justify-content: center;
+}
+
 body {
 background: rgb(250, 250, 250) url(http://lorempixel.com/1920/1080/nature/);
 font-family: Lato, Helvetica, Arial, sans-serif;
@@ -440,7 +463,7 @@ h2 {
   } 
   ::-webkit-scrollbar-thumb {
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-  } */
+  }
 
   section{
     min-width: 350px;
@@ -452,6 +475,8 @@ h2 {
 table{
   min-width: 875px;
   border-collapse: collapse;
+  margin-left:auto;
+  margin-right:auto;
 }
   
 thead{
