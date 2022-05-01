@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <link rel = "stylesheet" type = "text/css" href = "style.css"/>
+<script src="script.js"></script>
 <!-- <style>
 
     .active {
@@ -131,7 +132,7 @@
                     <td>$10</td>
 
                     <td>
-                        <div class="table__button-group"><a href="javascript:getRecipe(1);">Make it!</a>
+                        <div class="table__button-group"><a href="javascript:setRecipe(1);">Make it!</a>
                     </td>
                </tr>
                    <<?php 
@@ -146,10 +147,11 @@
                     if ($result = $mysqli->query($query)) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td>Hello</td>";
-                            echo "<td>World</td>";
-                            echo "<td>It</td>";
-                            echo "<td>I</td>";
+                            echo "<td>.$row['name'].</td>";
+                            echo "<td>.$row['type'].</td>";
+                            echo "<td>.$row['prep_time'].</td>";
+                            echo "<td>$.row['total_price'].</td>";
+                            echo "<td><div class="table__button-group"><a href="javascript:setRecipe(.$row['id'].);">Make it!</a></td>";
                             echo "</tr>";
                         }
                     }
@@ -162,7 +164,7 @@
     </section>
 </body>
 
-<script>
+<!-- <script>
 var slideIndex = 0;
 showSlides();
 function showSlides(){
@@ -179,5 +181,5 @@ function showSlides(){
 function getRecipe(ID){
     alert(ID);
 }
-</script>
+</script> -->
 

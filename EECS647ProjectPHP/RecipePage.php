@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <link rel = "stylesheet" type = "text/css" href = "style.css"/>
+<script src="script.js"></script>
 <head>
-    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <nav id="navbar" class="">
         <div class="nav-wrapper">
             <!-- Navbar Logo -->
@@ -35,6 +36,21 @@
 </head>
 
 <body>
-    <br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
     <header></header>
+    <input type="text" id="ReceivedRecipeId" value="Mickey"></input>
+    <div class="centered">
+        <?php 
+            //$idOfRecipe = $_GET['ReceivedRecipeId'];
+            // $mysqli = new mysqli("mysql.eecs.ku.edu","y283c244","kai9ju3p","y283c244");
+            
+
+            // if($mysqli->connect_errno){
+            //     echo "<p>Connection Failed</p>";
+            //     exit();
+            // }
+            // $query = "SELECT id, name, type, prep_time, total_price FROM Recipe WHERE id = $idOfRecipe;
+            echo '<h2>Chicken Alfredo</h2>';
+        ?>
+    </div>
 </body>
