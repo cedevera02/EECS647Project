@@ -41,25 +41,18 @@
     <div class="centered">
         <h2>Select Filters to Match What You Want To Eat</h2><br>
         <div id="Filters" class="form-group">
-            <form name="form" action="" method="get">
-                <label for="DietType">Choose a Diet Type:</label>
-                <select name="DietType" id="DietType" data-filter="make" class="filter-make filter form-control">
-                <option value="No preference">No preference</option>
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Vegan">Vegan</option>
-                </select>
-
+            <form name="form" action="FindRecipes.php" method="post">
                 <label for="Prices">Prices:</label>
                 <select name="Prices" id="Prices" data-filter="make" class="filter-make filter form-control">
                     <option value="N/A">N/A</option>
-                    <option value="$">$</option>
-                    <option value="$$">$$</option>
-                    <option value="$$$">$$$</option>
+                    <option value="10">&lt10</option>
+                    <option value="30">&lt30</option>
+                    <option value="35">&gt30</option>
                 </select>
 
                 <label for="MealType">Meal Type:</label>
                 <select name="MealType" id="MealType" data-filter="make" class="filter-make filter form-control">
-                    <option value="N/A">N/A</option>
+                    <option value="None">N/A</option>
                     <option value="Breakfast">Breakfast</option>
                     <option value="Lunch">Lunch</option>
                     <option value="Dinner">Dinner</option>
@@ -68,9 +61,9 @@
 
                 <label for="PrepTime">Prep Time:</label>
                 <select name="PrepTime" id="PrepTime" data-filter="make" class="filter-make filter form-control">
-                    <option value="N/A">N/A</option>
-                    <option value="<30min">&lt30 min</option>
-                    <option value=">30min">&gt30 min</option>
+                    <option value="0">N/A</option>
+                    <option value="30">&lt30 min</option>
+                    <option value="35">&gt30 min</option>
                 </select>
 
                 <button class="btn btn-block btn-primary" onclick="">Search</button>
@@ -89,12 +82,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                <<?php 
+                <?php 
 
-                    $DietType = $_GET['DietType'];
-                    $Prices = $_GET['Prices'];
-                    $MealType = $_GET['MealType'];
-                    $PrepTime = $_GET['PrepTime'];
+                    //$DietType = $_POST['DietType'];
+                    $Price = isset($_POST['Prices']) ? $_POST['Prices']: 0;
+                    $Meal = $_POST['MealType'];
+                    $Prep = $_POST['PrepTime'];
+                    $Empty = TRUE;
 
                     $mysqli = new mysqli("mysql.eecs.ku.edu","y283c244","kai9ju3p","y283c244");
 
@@ -102,17 +96,48 @@
                         echo "<p>Connection Failed</p>";
                         exit();
                     }
-                    $query = "SELECT id, name, type, prep_time, total_price FROM Recipe WHERE type = $DietType AND
-                    prep_time = $PrepTime";
+                    
+                    $query = "SELECT recipe_id, name, type, prep_time, total_price FROM Recipe";
+                    if($Price == 10 || $Price == 30){
+                        $query .= " WHERE total_price <{$Prices}";
+                        $Empty = FALSE;
+                    }elseif($Price == 35){
+                        $query .= " WHERE total_price > 30";
+                        $Empty = FALSE;
+                    }
+                    if($Empty == FALSE){
+                        if($Meal != "None"){
+                            $query .= " AND type = '{$Meal}'";
+                        }
+                    }else{
+                        if($Meal != "None"){
+                            $query .= " WHERE type = '{$Meal}'";
+                            $Empty = FALSE;
+                        }
+                    }
+                    if($Empty == FALSE){
+                        if($Prep != 0 && $Prep == 30){
+                            $query .= " AND prep_time <= 30";
+                        }elseif($Prep != 0 && $Prep == 35){
+                            $query .= " AND prep_time > 30";
+                        }
+                    }else{
+                        if($Prep != 0 && $Prep == 30){
+                            $query .= " WHERE prep_time <= 30";
+                        }elseif($Prep != 0 && $Prep == 35){
+                            $query .= " WHERE prep_time > 30";
+                        }
+                    }
+                    //$query = "SELECT recipe_id, name, type, prep_time, total_price FROM Recipe WHERE type = '{$MealType}'";
 
                     if ($result = $mysqli->query($query)) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td>.$row['name'].</td>";
-                            echo "<td>.$row['type'].</td>";
-                            echo "<td>.$row['prep_time'].</td>";
-                            echo "<td>$.row['total_price'].</td>";
-                            echo "<td><div class="table__button-group"><a href="javascript:getRecipe(.$row['id'].);">Make it!</a></td>";
+                            echo "<td>{$row['name']}</td>";
+                            echo "<td>{$row['type']}</td>";
+                            echo "<td>{$row['prep_time']}</td>";
+                            echo "<td>{$row['total_price']}</td>";
+                            echo "<td><div class='table__button-group'><a href='RecipePage.php?myVar={$row['recipe_id']}'>Make it!</a></td>";
                             echo "</tr>";
                         }
                     }
@@ -125,3 +150,9 @@
 
     </div>
 </body>
+
+<script>
+    
+</script>
+
+<!-- <a href='RecipePage.php?myVar={$row['recipe_id']}'> -->

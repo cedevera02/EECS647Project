@@ -13,7 +13,7 @@ function showSlides(){
     setTimeout(showSlides,2000)
     }
 function setRecipe(ID){
-    recipeID = ID;
+    document.getElementById("ReceivedRecipeId").value = ID;
 }
 
 function getRecipe(){
