@@ -8,7 +8,7 @@
             <!-- Navbar Logo -->
             <div class="logo">
             <!-- Logo Placeholder for Inlustration -->
-            <a href="IndexHome.html"><i class="fa fa-angellist"></i> EZ Recipe</a>
+            <a href="IndexHome.php"><i class="fa fa-angellist"></i> EZ Recipe</a>
             </div>
 
             <!-- Navbar Links -->
@@ -42,13 +42,6 @@
         <h2>Select Filters to Match What You Want To Eat</h2><br>
         <div id="Filters" class="form-group">
             <form name="form" action="FindRecipes.php" method="post">
-                <label for="Prices">Prices:</label>
-                <select name="Prices" id="Prices" data-filter="make" class="filter-make filter form-control">
-                    <option value="N/A">N/A</option>
-                    <option value="10">&lt10</option>
-                    <option value="30">&lt30</option>
-                    <option value="35">&gt30</option>
-                </select>
 
                 <label for="MealType">Meal Type:</label>
                 <select name="MealType" id="MealType" data-filter="make" class="filter-make filter form-control">
@@ -77,17 +70,13 @@
                         <td>Name of Recipe:</td>
                         <td>Type:</td>
                         <td>Prep Time:</td>
-                        <td>Total Price:</td>
                         <td></td>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
-
-                    //$DietType = $_POST['DietType'];
-                    $Price = isset($_POST['Prices']) ? $_POST['Prices']: 0;
-                    $Meal = $_POST['MealType'];
-                    $Prep = $_POST['PrepTime'];
+                    $Meal = isset($_POST['MealType']) ? $_POST['MealType'] : "None";
+                    $Prep = isset($_POST['PrepTime']) ? $_POST['PrepTime'] : 0;
                     $Empty = TRUE;
 
                     $mysqli = new mysqli("mysql.eecs.ku.edu","y283c244","kai9ju3p","y283c244");
@@ -98,13 +87,6 @@
                     }
                     
                     $query = "SELECT recipe_id, name, type, prep_time, total_price FROM Recipe";
-                    if($Price == 10 || $Price == 30){
-                        $query .= " WHERE total_price <{$Prices}";
-                        $Empty = FALSE;
-                    }elseif($Price == 35){
-                        $query .= " WHERE total_price > 30";
-                        $Empty = FALSE;
-                    }
                     if($Empty == FALSE){
                         if($Meal != "None"){
                             $query .= " AND type = '{$Meal}'";
@@ -128,7 +110,6 @@
                             $query .= " WHERE prep_time > 30";
                         }
                     }
-                    //$query = "SELECT recipe_id, name, type, prep_time, total_price FROM Recipe WHERE type = '{$MealType}'";
 
                     if ($result = $mysqli->query($query)) {
                         while ($row = $result->fetch_assoc()) {
@@ -136,8 +117,7 @@
                             echo "<td>{$row['name']}</td>";
                             echo "<td>{$row['type']}</td>";
                             echo "<td>{$row['prep_time']}</td>";
-                            echo "<td>{$row['total_price']}</td>";
-                            echo "<td><div class='table__button-group'><a href='RecipePage.php?myVar={$row['recipe_id']}'>Make it!</a></td>";
+                            echo "<td><div class='table__button-group'><a href='RecipePage.php?{$row['recipe_id']}'>Make it!</a></td>";
                             echo "</tr>";
                         }
                     }
@@ -154,5 +134,3 @@
 <script>
     
 </script>
-
-<!-- <a href='RecipePage.php?myVar={$row['recipe_id']}'> -->

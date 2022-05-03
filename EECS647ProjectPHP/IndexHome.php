@@ -119,21 +119,10 @@
                     <td>Name of Recipe:</td>
                     <td>Type:</td>
                     <td>Prep Time:</td>
-                    <td>Total Price:</td>
                     <td></td>
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr>
-                    <td>Chicken Alfredo</td>
-                    <td>N/A</td>
-                    <td>30 min</td>
-                    <td>$10</td>
-
-                    <td>
-                        <div class="table__button-group"><a href="javascript:setRecipe(1);">Make it!</a>
-                    </td>
-               </tr> -->
                    <?php 
                     $mysqli = new mysqli("mysql.eecs.ku.edu","y283c244","kai9ju3p","y283c244");
 
@@ -149,8 +138,7 @@
                             echo "<td>{$row['name']}</td>";
                             echo "<td>{$row['type']}</td>";
                             echo "<td>{$row['prep_time']}</td>";
-                            echo "<td>{$row['total_price']}</td>";
-                            echo "<td><div class='table__button-group'><a>Make it!</a></div></td>";
+                            echo "<td><div class='table__button-group'><a href='RecipePage.php?{$row['recipe_id']}'>Make it!</a></div></td>";
                             echo "</tr>";
                         }
                     }
