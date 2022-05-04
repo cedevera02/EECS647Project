@@ -64,12 +64,21 @@
                 exit();
             }
             $query = "SELECT name, instruction, prep_time, total_price FROM Recipe WHERE recipe_id = {$idOfRecipe}";
+            $query2 = "SELECT name, quantity FROM Uses, Ingredients WHERE Uses.recipe_id = {$idOfRecipe} AND Uses.ingredients_id = Ingredients.ingredients_id";
+            echo "<h2>Ingredients needed: </h2><br> ";
+            if ($result2 = $mysqli->query($query2)){
+                while($row = $result2->fetch_assoc()){
+                    echo $row["name"]. "          " . $row["quantity"].  "<br>";
+                }
+            }
+            $result2->free();
+            echo "<br><br> ";
             if ($result = $mysqli->query($query)){
                 while($row = $result->fetch_assoc()){
                     echo "<h2>Recipe of " . $row["name"]. " :</h2><br><br>". $row["instruction"]. "<br>Estimated preperation time: ~" . $row["prep_time"] . " mins<br><br><h3>Total Price = $" . $row["total_price"] . "</h3><br>";
                 }
             }
-            $result->free();
+            $result->free();            
         ?>
     </div>
 </body>
